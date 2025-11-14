@@ -5,70 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>刘登丰 - 个人简历</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Source+Code+Pro:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #1a1b26;
+            --surface-color: #24283b;
+            --text-color: #a9b1d6;
+            --primary-color: #7aa2f7;
+            --secondary-color: #bb9af7;
+            --green-color: #9ece6a;
+            --border-color: #414868;
+        }
+
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
             margin: 0;
             padding: 20px;
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
         .container {
             max-width: 900px;
             margin: 20px auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
         h1, h2, h3 {
-            color: #2c3e50;
+            color: var(--primary-color);
             margin-top: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-family: 'Source Code Pro', monospace;
+            letter-spacing: 1px;
         }
         h1 {
-            font-size: 2.5em;
+            font-size: 2.8em;
             text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            text-shadow: 0 0 5px var(--primary-color);
         }
         h2 {
-            font-size: 1.8em;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
+            font-size: 2em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
         }
         h3 {
-            font-size: 1.3em;
-            color: #34495e;
-            margin-bottom: 8px;
+            font-size: 1.4em;
+            color: var(--green-color);
+            margin-bottom: 10px;
         }
         section {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         .personal-info p {
             margin: 5px 0;
             text-align: center;
+            font-size: 1.1em;
         }
         .personal-info p strong {
-            color: #3498db;
+            color: var(--primary-color);
+            font-weight: normal;
         }
         .contact-info {
             text-align: center;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin-top: 15px;
+            margin-bottom: 25px;
         }
         .contact-info span {
-            margin: 0 10px;
-            color: #555;
+            margin: 0 15px;
+            color: var(--text-color);
         }
         .contact-info a {
-            color: #3498db;
+            color: var(--primary-color);
             text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         .contact-info a:hover {
-            text-decoration: underline;
+            color: #fff;
+            text-shadow: 0 0 8px var(--primary-color);
         }
         ul {
             list-style: none;
@@ -76,71 +97,68 @@
             margin: 0;
         }
         ul li {
-            margin-bottom: 8px;
-            padding-left: 20px;
+            margin-bottom: 10px;
+            padding-left: 25px;
             position: relative;
         }
         ul li::before {
-            content: '•';
-            color: #3498db;
+            content: '>>';
+            font-family: 'Source Code Pro', monospace;
+            color: var(--primary-color);
             position: absolute;
             left: 0;
             font-weight: bold;
         }
-        .experience-item, .education-item, .project-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 4px solid #3498db;
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.2);
+            border-left: 4px solid var(--secondary-color);
             border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .experience-item:hover, .education-item:hover {
+            background-color: rgba(0,0,0,0.3);
+            transform: translateY(-3px);
         }
         .experience-item h3, .project-item h3 {
             margin-top: 0;
             margin-bottom: 5px;
         }
         .experience-item p, .project-item p, .education-item p {
-            margin: 0 0 5px 0;
-            color: #666;
+            margin: 0 0 8px 0;
+            color: #8a92b3;
         }
         .experience-item ul, .project-item ul {
-            margin-top: 10px;
+            margin-top: 15px;
         }
-        .skills-list {
+        .skills-list, .certifications-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 15px;
         }
-        .skills-list span {
-            background-color: #e9f5ff;
-            color: #3498db;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
+        .skills-list span, .certifications-list span, .language-item {
+            font-family: 'Source Code Pro', monospace;
+            background-color: var(--border-color);
+            color: var(--green-color);
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-size: 0.95em;
             white-space: nowrap;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .skills-list span:hover, .certifications-list span:hover, .language-item:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            cursor: default;
+        }
+        .language-list {
+            margin-top: 15px;
         }
         .language-item {
             display: inline-block;
-            margin-right: 20px;
-            background-color: #e9f5ff;
-            color: #3498db;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        .certifications-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .certifications-list span {
-            background-color: #e9f5ff;
-            color: #3498db;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            white-space: nowrap;
+            margin-right: 15px;
         }
     </style>
 </head>
