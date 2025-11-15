@@ -262,20 +262,12 @@
                         <h3>软通动力 - 架构师</h3>
                         <p>2019/08-2021/06 · 北京</p>
                         <ul>
-                            <li>职责概述: 负责产品技术架构设计与落地,包括产品需求分析、技术选型、产品功能规划、架构设计、流程合理性规划、核心功能开发、重要代码编写、第三方接入、产品迭代等。</li>
-                            <li>架构设计及产品开发: 负责SDWAN产品转发层开发设计,包括IPsec VPN、ACL+DPI功能开发,主导整体转发+控制层软件架构设计及相关技术调用。从0到1完成软通SDWAN产品VSR-1000设备架构设计与开发。</li>
-                            <li>数据转发面采用VPP,控制面参考Cisco开源Ligato项目,调研ETCD、VPP-Agent、K8s、Contiv相关功能模块,设计VSR1000设备端软件架构,并根据需求进行相关架构优化与迭代。设计VSR1000北向MQTT接口及相关Client部分代码框架。</li>
-                            <li>修改StrongSwan代码,使得VPP通过Punt技术方式将IKEV2协商数据透传给StrongSwan进程,通过VPP Bin API方式,StrongSwan将协商配置下发到VPP中,从而做到协商层采用StrongSwan而数据转发层用VPP的效果,修改VPP代码,支持NAT-T功能。</li>
-                            <li>修改并调整VPP NAT及IPsec部分代码,支持移动端通过IPsec VPN接入的同时,还能通过IPsec VPN方式访问Internet。</li>
-                            <li>调研VPP开源DPI项目UDPI,参考原有UDPI协议识别引擎,结合VPP的ACL功能开发ACL+DPI功能。</li>
-                            <li>增加VPP出向流控功能及即时流速统计功能并申请相关专利。</li>
-                            <h4>主要成就:</h4>
-                            <ul>
-                                <li>从0到1完成软通VSN虚拟安全网项目,实现产品在客户方稳定在线运营。</li>
-                                <li>设计vsr1000端北向mqtt接口及相关client部分代码框架,主导相关技术调研与技术选型,解决产品实际运营上线过程中遇到的问题,制定相应解决方案。</li>
-                                <li>从0-1落地产品,完成后期功能迭代及相应性能优化,保障产品在客户方稳定在线运营。</li>
-                            </ul>
-                            <p><strong>技术栈:</strong> 语言: C, Golang; 工具: VPP, Docker; 平台: AWS, Azure, 阿里云, 腾讯云, 华为云</p>
+                            <li>主导公司核心SDWAN产品（VSR-1000）的整体架构设计与从0到1的落地实现。</li>
+                            <li>使用 <strong>VPP</strong> 构建高性能数据转发面，并参考Cisco Ligato项目，结合 <strong>ETCD、K8s、Docker</strong> 等云原生技术设计了VSR-1000设备端软件架构，支持在 <strong>AWS、Azure、阿里云</strong> 等多云平台部署。</li>
+                            <li>使用 <strong>Golang</strong> 设计并实现了用于设备管理与监控的北向MQTT接口及客户端框架。</li>
+                            <li>深度修改 <strong>StrongSwan</strong> 与 <strong>VPP</strong> 源码，通过Punt及Bin API打通控制面与数据面，实现了NAT-T、移动端IPsec接入、ACL+DPI等核心网络功能。</li>
+                            <li>为VPP增加了出口流控及实时速率统计功能，并成功申请相关技术专利。</li>
+                            <li><strong>主要成就:</strong> 独立完成了公司核心产品VSN虚拟安全网的从0到1研发，并确保其在客户生产环境中长期稳定运行。</li>
                         </ul>
                     </div>
                     <div class="experience-item">
