@@ -3,483 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>刘登丰 - 个人简历</title>
+    <title>刘登丰 - 技术简历</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Source+Code+Pro:wght@400;700&display=swap');
+        /* ================= 技术极客风主题 ================= */
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
 
         :root {
-            --bg-color: #1a1b26;
-            --surface-color: #24283b;
-            --text-color: #a9b1d6;
-            --primary-color: #7aa2f7;
-            --secondary-color: #bb9af7;
-            --green-color: #9ece6a;
-            --border-color: #414868;
+            --bg: #0d0f14;
+            --panel: #11161f;
+            --panel-light: #171d27;
+            --accent: #00eaff;
+            --accent2: #5d68ff;
+            --text: #c9d1d9;
+            --text-dim: #8b949e;
+            --border: #1f242d;
+            --glow: 0 0 12px rgba(0, 234, 255, 0.4);
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.7;
             margin: 0;
-            padding: 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            padding: 40px 20px;
+            background: var(--bg);
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text);
         }
+
         .container {
-            max-width: 900px;
-            margin: 20px auto;
-            background: var(--surface-color);
-            padding: 40px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            max-width: 960px;
+            margin: auto;
+            background: var(--panel);
+            padding: 45px 50px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 35px rgba(0,0,0,0.45);
         }
+
         h1, h2, h3 {
-            color: var(--primary-color);
-            margin-top: 20px;
-            margin-bottom: 15px;
-            font-family: 'Source Code Pro', monospace;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
         }
+
         h1 {
-            font-size: 2.8em;
             text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 15px;
-            text-shadow: 0 0 5px var(--primary-color);
-        }
-        h2 {
-            font-size: 2em;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-        h3 {
-            font-size: 1.4em;
-            color: var(--green-color);
+            font-size: 3em;
+            color: var(--accent);
+            text-shadow: var(--glow);
             margin-bottom: 10px;
         }
-        section {
-            margin-bottom: 40px;
-        }
-        .personal-info p {
-            margin: 5px 0;
+
+        .subtitle {
             text-align: center;
             font-size: 1.1em;
+            color: var(--accent2);
+            margin-bottom: 25px;
         }
-        .personal-info p strong {
-            color: var(--primary-color);
-            font-weight: normal;
+
+        h2 {
+            margin-top: 40px;
+            font-size: 1.8em;
+            color: var(--accent2);
+            border-bottom: 1px dashed var(--accent2);
+            padding-bottom: 6px;
         }
+
+        h3 {
+            font-size: 1.3em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
         .contact-info {
             text-align: center;
-            margin-top: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
-        .contact-info span {
-            margin: 0 15px;
-            color: var(--text-color);
-        }
+
         .contact-info a {
-            color: var(--primary-color);
+            margin: 0 12px;
+            color: var(--accent);
             text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: 0.3s;
         }
+
         .contact-info a:hover {
+            text-shadow: var(--glow);
             color: #fff;
-            text-shadow: 0 0 8px var(--primary-color);
         }
+
         ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            padding-left: 20px;
         }
-        ul li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-        }
+
         ul li::before {
-            content: '>>';
-            font-family: 'Source Code Pro', monospace;
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
+            content: "▣";
+            color: var(--accent);
+            margin-right: 10px;
         }
-        .experience-item, .education-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: rgba(0,0,0,0.2);
-            border-left: 4px solid var(--secondary-color);
-            border-radius: 4px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+
+        .card {
+            background: var(--panel-light);
+            padding: 18px 22px;
+            border-left: 3px solid var(--accent2);
+            margin-bottom: 22px;
+            border-radius: 6px;
+            transition: 0.25s;
         }
-        .experience-item:hover, .education-item:hover {
-            background-color: rgba(0,0,0,0.3);
+
+        .card:hover {
             transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 234, 255, 0.15);
         }
-        .experience-item h3, .project-item h3 {
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-        .experience-item p, .project-item p, .education-item p {
-            margin: 0 0 8px 0;
-            color: #8a92b3;
-        }
-        .experience-item ul, .project-item ul {
-            margin-top: 15px;
-        }
-        .skills-list, .certifications-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 15px;
-        }
-        .skills-list span, .certifications-list span, .language-item {
-            font-family: 'Source Code Pro', monospace;
-            background-color: var(--border-color);
-            color: var(--green-color);
-            padding: 6px 15px;
-            border-radius: 5px;
-            font-size: 0.95em;
-            white-space: nowrap;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .skills-list span:hover, .certifications-list span:hover, .language-item:hover {
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-            cursor: default;
-        }
-        .language-list {
-            margin-top: 15px;
-        }
-        .language-item {
+
+        .tag {
             display: inline-block;
-            margin-right: 15px;
+            background: #1d2533;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            margin: 6px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: var(--accent);
+            transition: 0.3s;
         }
-        .download-buttons {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .btn {
-            font-family: 'Source Code Pro', monospace;
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin: 0 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
+
+        .tag:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: var(--glow);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>刘登丰</h1>
-            <div class="personal-info">
-                <p><strong>48岁</strong> · <strong>硕士</strong> · <strong>工作23年4个月</strong></p>
+<div class="container">
 
-            </div>
-            <div class="contact-info">
-                <span><i class="fas fa-envelope"></i> 邮箱: <a href="mailto:liu_df@qq.com">liu_df@qq.com</a></span>
-                <span><i class="fab fa-github"></i> GitHub: <a href="https://github.com/liudf0716" target="_blank">@liudf0716</a></span>
-                <span><i class="fab fa-x-twitter"></i> X: <a href="https://x.com/staylightblow8" target="_blank">@staylightblow8</a></span>
-                <span><i class="fas fa-video"></i> Bilibili: <a href="https://space.bilibili.com/548480670" target="_blank">staylightblow</a></span>
-            </div>
-            <div class="download-buttons">
-                <button id="download-pdf" class="btn"><i class="fas fa-file-pdf"></i> 下载PDF</button>
-                <button id="download-md" class="btn"><i class="fab fa-markdown"></i> 下载Markdown</button>
-            </div>
-        </header>
+    <h1>刘登丰</h1>
+    <div class="subtitle">资深网络架构师 · 系统研发专家 · OpenWrt/VPP 社区贡献者</div>
 
-        <section id="highlights">
-            <h2>优势亮点</h2>
-            <h3>领域优势</h3>
+    <div class="contact-info">
+        <a href="mailto:liu_df@qq.com"><i class="fas fa-envelope"></i> 邮箱</a>
+        <a href="https://github.com/liudf0716" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://x.com/staylightblow8" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+        <a href="https://space.bilibili.com/548480670" target="_blank"><i class="fas fa-video"></i> Bilibili</a>
+    </div>
+
+    <div class="download-btns" style="text-align:center; margin-bottom:30px;">
+        <button id="download-pdf" style="padding:10px 18px; margin:0 10px; border:none; border-radius:6px; background:var(--accent2); color:#fff; font-family:'JetBrains Mono'; cursor:pointer;">下载 PDF</button>
+        <button id="download-md" style="padding:10px 18px; margin:0 10px; border:none; border-radius:6px; background:var(--accent); color:#000; font-family:'JetBrains Mono'; cursor:pointer;">下载 Markdown</button>
+    </div>
+
+    <!-- ================= 优势亮点 ================= -->
+    <section>
+        <h2>优势亮点</h2>
+
+        <h3>领域优势</h3>
+        <div class="card">
             <ul>
-                <li>资深网络技术架构师及产品解决方案专家</li>
+                <li>资深网络技术架构师及产品方案专家</li>
                 <li>电信研究院外聘专家</li>
-                <li>Openwrt、vpp开源社区活跃者及代码贡献者</li>
-                <li>拥有逾20年一线技术研发经验，在需求分析、架构规划、系统软件研发及技术方案从0到1完整落地方面具备丰富实战经历。</li>
-                <li>能够从0-1规划并落地技术方案</li>
+                <li>OpenWrt、VPP 社区活跃者与代码贡献者</li>
+                <li>20+ 年研发经验，从 0-1 架构落地实战丰富</li>
+                <li>深度网络协议/系统软件技术栈积累</li>
             </ul>
-            <h3>职业素养</h3>
+        </div>
+
+        <h3>职业素养</h3>
+        <div class="card">
             <ul>
-                <li>尽职负责</li>
-                <li>对工作热情</li>
-                <li>具备优秀的沟通协调能力</li>
-                <li>善于团队协作</li>
-                <li>逻辑思维好</li>
-                <li>分析及解决问题的能力强</li>
-                <li>能在压力下工作</li>
-                <li>学习、创新能力佳</li>
+                <li>使命感强、执行负责</li>
+                <li>沟通协调与团队共建能力突出</li>
+                <li>逻辑清晰，善于问题定位与突破</li>
+                <li>能够在高压环境下保持稳定交付</li>
             </ul>
-        </section>
+        </div>
+    </section>
 
-                    <section id="experience">
-                        <h2>工作经历 & 项目经验</h2>
-                        
-                    <div class="experience-item">
-                        <h3>远程工作 - 技术顾问 & 专家</h3>
-                        <p>2024/02-至今</p>
-                        <ul>
-                            <li>
-                                <strong>北京电信研究院 - 外聘技术专家:</strong>
-                                <ul>
-                                    <li>主导VPP配置层整体解决方案的设计与验证，为客户下一代网络架构提供了关键技术支撑。</li>
-                                    <li>完成双机热备VRRP及SRv6等关键技术的深度调研与PoC验证，显著提升了方案的可靠性与前瞻性。</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>安徽点亮软件技术股份有限公司 - 外聘技术顾问:</strong>
-                                <ul>
-                                    <li>成功研发并交付了基于VPP的高性能Portal跳转模块，实现了对HTTP/HTTPS流量的有效劫持与重定向，为客户的业务引流提供了核心功能。</li>
-                                    <li>独立完成VPP中PPPoE服务器端与客户端功能的完整实现，填补了VPP在该领域的功能空白。</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>东海实验室 - 科研项目临聘人员:</strong>
-                                <ul>
-                                    <li>主导完成了chawrt开源项目在MT7981B及OK3588（RK3588）异构硬件平台上的深度适配与移植。</li>
-                                    <li>通过集成鼎桥5G模组、流控、DPI、SNMP、MQTT等关键插件，并成功引入Hailo AI计算环境（驱动、SDK及Docker），为海上融合通信网关项目的快速原型开发和AI功能验证奠定了坚实基础。</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>贵州数博谷信息技术有限公司 - 项目协助:</strong>
-                                <ul>
-                                    <li>主导技术方案并基于chawrt项目进行深度定制，成功助力客户一次性通过公安三所的公共场所无线安全上网认证。</li>
-                                    <li>独立开发的配套认证服务器平台，100%满足认证所需的安全规范。</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>佰才邦 - 高级软件工程师</h3>
-                        <p>2023/02-2024/01</p>
-                        <ul>
-                            <li>主导将信令网关(UPF)与安全网关合并至统一VPP版本，并负责向Ubuntu平台的移植工作。</li>
-                            <li>完善了VPP+Strongswan在IPv6协议栈的支持，并负责解决测试与客户现场的各类技术问题。</li>
-                            <li><strong>主要成就:</strong> 独立设计并实现了VPP+Strongswan双机热备方案中IKE及IPsec SA的高效同步功能，确保在2万并发VPN隧道下仍能快速、准确同步，**该方案成功通过了运营商现网的严苛环境检验**。</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>中电科思仪 - 软件工程师</h3>
-                        <p>2021/06-2023/02</p>
-                        <ul>
-                            <li>在公司与华为合作的Tesgine测试仪项目中，负责底层 <strong>VXLAN、PPPoE、DHCP</strong> 等协议的复杂维护与性能优化。</li>
-                            <li>作为公司自研网络测试仪的技术研究员，深入研究了基于 <strong>DPDK</strong> 的Cisco T-REX项目及FPGA方案，为产品技术选型提供了关键决策依据。</li>
-                            <li>主导了 <strong>TLS</strong> 及 <strong>IKEv2</strong> 协议的调研，并成功实现了DH密钥交换协议，解决了产品的核心安全技术难题。</li>
-                            <li><strong>主要成就:</strong> 通过对多种网络协议的深度优化和对前沿开源方案的引入，<strong>成功提升了自研网络测试仪的核心性能与效率</strong>，并为产品的安全性和可靠性提供了坚实保障。</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>软通动力 - 架构师</h3>
-                        <p>2019/08-2021/06 · 北京</p>
-                        <ul>
-                            <li>主导公司核心SDWAN产品（VSR-1000）的整体架构设计与从0到1的落地实现。</li>
-                            <li>使用 <strong>VPP</strong> 构建高性能数据转发面，并参考Cisco Ligato项目，结合 <strong>ETCD、K8s、Docker</strong> 等云原生技术设计了VSR-1000设备端软件架构，支持在 <strong>AWS、Azure、阿里云</strong> 等多云平台部署。</li>
-                            <li>使用 <strong>Golang</strong> 设计并实现了用于设备管理与监控的北向MQTT接口及客户端框架。</li>
-                            <li>深度修改 <strong>StrongSwan</strong> 与 <strong>VPP</strong> 源码，通过Punt及Bin API打通控制面与数据面，实现了NAT-T、移动端IPsec接入、ACL+DPI等核心网络功能。</li>
-                            <li>为VPP增加了出口流控及实时速率统计功能，并成功申请相关技术专利。</li>
-                            <li><strong>主要成就:</strong> 独立完成了公司核心产品VSN虚拟安全网的从0到1研发，并确保其在客户生产环境中长期稳定运行。</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>坤腾畅联(极路由商业wifi) - 技术负责人</h3>
-                        <p>2015/10-2019/05 · 北京</p>
-                        <ul>
-                            <li>主导智能路由产品研发管理，负责产品需求分析、技术选型、架构设计与落地，确保项目按时高质量完成。</li>
-                            <li>基于 <strong>OpenWrt/LEDE</strong> 开源系统，深度定制并迭代智能路由器固件，该固件在高峰期运行于 <strong>8万多台设备</strong>，成为国内最大的第三方商业WiFi系统提供商之一。</li>
-                            <li>作为 <strong>OpenWrt/LEDE</strong> 开源项目贡献者，开发并维护智能路由器功能插件，并向开源社区贡献。</li>
-                            <li>负责商业WiFi认证服务平台、智能硬件远程管理平台、DPI插件及MAC探针功能开发，并与航天信息合作开发配套企业中枢智能硬件设备。</li>
-                            <li><strong>主要成就:</strong> 成功构建并运营了国内领先的商业WiFi系统，显著提升了产品功能与市场竞争力。</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>网擎科技 - 技术合伙人</h3>
-                        <p>2008/06-2015/10 · 北京</p>
-                        <ul>
-                            <li>作为技术合伙人，全面负责公司核心产品（网擎流控、APFree商业WiFi）的系统架构设计、研发与项目管理。</li>
-                            <li>主导并开源了 <strong>apfree-wifidog</strong> 项目，作为社区首个支持HTTPS劫持的wifidog实现，因其高性能与高稳定性广受好评。</li>
-                            <li>通过对系统瓶颈的深入分析，解决各类技术难题，主导了多次关键性能调优工作。</li>
-                            <li><strong>主要成就:</strong> 从0到1完整设计、研发并交付了“网擎流控”全系列产品。该产品基于 <strong>Linux Netfilter</strong> 开发，包含DPI与QoS核心功能，成功经受了运营商和高校等高并发、大流量市场的严苛考验，让我完整地经历了一款产品从概念到市场成功的全过程。</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>Infoligic - 高级软件工程师</h3>
-                        <p>2006/06-2008/06 · 新加坡</p>
-                        <ul>
-                            <li>根据客户需求,深入搜索服务器端代码,开发和升级服务器端程序和库。</li>
-                            <li>参与北京首都国际机场3号航站楼航空显示项目和新加坡樟宜国际机场1号航站楼航空显示项目的服务器端开发。</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>天融信 - 高级软件工程师</h3>
-                        <p>2002/07-2006/06 · 北京</p>
-                        <ul>
-                            <li>参与IPSec VPN、PKI CA中心部分、内联网网络保护系统等项目。</li>
-                        </ul>
-                    </div>
-                    </section>
-                    <section id="education">
-                        <h2>教育背景</h2>
-                        
-                    <div class="education-item">
-                        <h3>中国气象科学研究院</h3>
-                        <p>1999/09-2002/07 · 硕士 · 大气物理与大气环境</p>
-                    </div>
-                    <div class="education-item">
-                        <h3>兰州大学</h3>
-                        <p>1994/09-1998/07 · 本科 · 气象学</p>
-                    </div>
-                    </section>
-                    <section id="skills">
-                        <h2>技能</h2>
-                        <div class="skills-list">
-                                        <span>Linux</span>
-                                        <span>Openwrt</span>
-                                        <span>MIPS</span>
-                                        <span>ARM</span>
-                                        <span>X86</span>
-                                        <span>C/C++</span>
-                                        <span>shell</span>
-                                        <span>golang</span>
-                                        <span>IP网络协议栈 (TCP/IP, DPI, QoS, Srv6, Vxlan, GRE, PPPoE, IKEv2, TLS)</span>
-                                        <span>iptables&netfilter</span>
-                                        <span>VPP</span>
-                                        <span>Strongswan</span>
-                                        <span>t-rex</span>
-                                        <span>docker</span>
-                                        <span>MYSQL</span>
-                                        <span>MONGODB</span>
-                                        <span>REDIS</span>
-                        </div>
-                    </section>
-                    <section id="languages">
-                        <h2>语言能力</h2>
-                        <div class="language-list">
-                                        <span class="language-item">英语 (良好)</span>
-                                        <span class="language-item">普通话 (流利)</span>
-                        </div>
-                    </section>
-                    <section id="certifications">
-                        <h2>证书</h2>
-                        <div class="certifications-list">
-                                        <span>阿里云ACP</span>
-                                        <span>AWS SAP</span>
-                                        <span>CET-6</span>
-                        </div>
-                    </section>    </div>
-    <script>
-        function downloadPdf() {
-            const element = document.querySelector('.container');
-            const opt = {
-                margin:       0.5,
-                filename:     '刘登丰-个人简历.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true, backgroundColor: null },
-                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-            };
-            
-            const buttons = document.querySelector('.download-buttons');
-            buttons.style.display = 'none';
+    <!-- ================= 工作经历 ================= -->
+    <section>
+        <h2>工作经历 & 项目经验</h2>
 
-            html2pdf().set(opt).from(element).save().then(() => {
-                buttons.style.display = 'block';
-            });
+        <div class="card">
+            <h3>远程工作 - 技术顾问 & 专家</h3>
+            <p>2024/02 - 至今</p>
+            <ul>
+                <li>北京电信研究院：主导VPP配置层方案设计与验证，完成VRRP、SRv6等关键技术PoC。</li>
+                <li>安徽点亮：研发VPP高性能Portal模块及PPPoE客户端/服务器功能。</li>
+                <li>东海实验室：负责chawrt在MT7981B/OK3588平台移植，集成鼎桥5G模组及Hailo AI环境。</li>
+                <li>贵州数博谷：基于chawrt定制方案，助力通过公安三所无线安全上网认证。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>佰才邦 - 高级软件工程师</h3>
+            <p>2023/02 - 2024/01</p>
+            <ul>
+                <li>主导UPF与安全网关合并至统一VPP版本，并负责向Ubuntu平台移植。</li>
+                <li>完善VPP+Strongswan的IPv6协议栈支持，解决测试与客户现场技术问题。</li>
+                <li><strong>主要成就:</strong> 独立设计并实现VPP+Strongswan双机热备方案中IKE及IPsec SA的高效同步功能，确保在2万并发VPN隧道下仍能快速、准确同步，成功通过运营商现网严苛检验。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>中电科思仪 - 软件工程师</h3>
+            <p>2021/06 - 2023/02</p>
+            <ul>
+                <li>负责Tesgine测试仪底层VXLAN、PPPoE、DHCP等协议维护与性能优化。</li>
+                <li>研究DPDK、Cisco T-REX及FPGA网络方案，为主导TLS及IKEv2协议调研提供决策依据。。</li>
+                <li><strong>主要成就:</strong> 成功提升自研网络测试仪核心性能与效率，并为产品安全性和可靠性提供保障。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>软通动力 - 架构师</h3>
+            <p>2019/08 - 2021/06</p>
+            <ul>
+                <li>主导公司核心SDWAN产品（VSR-1000）的整体架构设计与从0到1落地。</li>
+                <li>使用VPP构建高性能数据转发面，结合ETCD、K8s、Docker等云原生技术设计VSR-1000设备端软件架构，支持AWS、Azure、阿里云等部署。</li>
+                <li>使用Golang设计并实现北向MQTT接口及客户端框架。</li>
+                <li>深度修改StrongSwan与VPP源码，实现NAT-T、移动端IPsec接入、ACL+DPI等核心网络功能。</li>
+                <li><strong>主要成就:</strong> 独立完成公司核心产品VSN虚拟安全网的从0到1研发，确保其在客户生产环境中长期稳定运行。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>坤腾畅联(极路由商业wifi) - 技术负责人</h3>
+            <p>2015/10 - 2019/05</p>
+            <ul>
+                <li>主导智能路由产品研发管理，负责产品需求分析、技术选型、架构设计与落地。</li>
+                <li>基于OpenWrt/LEDE开源系统，深度定制并迭代智能路由器固件，该固件在高峰期运行于8万多台设备，成为国内最大的第三方商业WiFi系统提供商之一。</li>
+                <li>作为OpenWrt/LEDE开源项目贡献者，开发并维护智能路由器功能插件。</li>
+                <li>负责商业WiFi认证服务平台、智能硬件远程管理平台、DPI插件及MAC探针功能开发。</li>
+                <li><strong>主要成就:</strong> 成功构建并运营了国内领先的商业WiFi系统，显著提升了产品功能与市场竞争力。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>网擎科技 - 技术合伙人</h3>
+            <p>2008/06 - 2015/10</p>
+            <ul>
+                <li>作为技术合伙人，全面负责公司核心产品（网擎流控、APFree商业WiFi）的系统架构设计、研发与项目管理。</li>
+                <li>主导并开源了 <strong>apfree-wifidog</strong> 项目，作为社区首个支持HTTPS劫持的wifidog实现，因其高性能与高稳定性广受好评。</li>
+                <li>通过对系统瓶颈的深入分析，解决各类技术难题，主导了多次关键性能调优工作。</li>
+                <li><strong>主要成就:</strong> 从0到1完整设计、研发并交付了“网擎流控”全系列产品。该产品基于Linux Netfilter开发，包含DPI与QoS核心功能，成功经受了运营商和高校等高并发、大流量市场的严苛考验，让我完整地经历了一款产品从概念到市场成功的全过程。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Infoligic / 天融信 - 软件工程师</h3>
+            <p>2002 - 2008</p>
+            <ul>
+                <li>参与机场显示系统开发（北京 T3，新加坡樟宜机场）。</li>
+                <li>开发 IPSec VPN、PKI、入侵防护系统。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ================= 教育背景 ================= -->
+    <section>
+        <h2>教育背景</h2>
+        <div class="card"><strong>中国气象科学研究院</strong> — 硕士，大气物理与大气环境 (1999/09-2002/07)</div>
+        <div class="card"><strong>兰州大学</strong> — 本科，气象学 (1994/09-1998/07)</div>
+    </section>
+
+    <!-- ================= 技能 ================= -->
+    <section>
+        <h2>技术技能</h2>
+        <div>
+            <span class="tag">Linux</span>
+            <span class="tag">OpenWrt</span>
+            <span class="tag">VPP</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">Golang</span>
+            <span class="tag">Netfilter/iptables</span>
+            <span class="tag">DPDK</span>
+            <span class="tag">TCP/IP</span>
+            <span class="tag">PPPoE/DHCP</span>
+            <span class="tag">IKEv2/TLS</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Redis/MongoDB</span>
+            <span class="tag">Srv6/VXLAN</span>
+            <span class="tag">DPI/QoS</span>
+        </div>
+    </section>
+
+    <!-- ================= 语言 & 证书 ================= -->
+    <section>
+        <h2>语言能力</h2>
+        <div class="card">英语 (良好)、普通话 (流利)</div>
+
+        <h2>证书</h2>
+        <div>
+            <span class="tag">阿里云 ACP</span>
+            <span class="tag">AWS SAP</span>
+            <span class="tag">CET-6</span>
+        </div>
+    </section>
+
+</div>
+<script>
+    document.getElementById('download-pdf').onclick = function() {
+        const element = document.querySelector('.container');
+        const opt = {
+            margin: 0.5,
+            filename: '刘登丰-技术简历.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, backgroundColor: null },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        // Temporarily hide download buttons to prevent them from appearing in the PDF
+        const downloadButtons = document.querySelector('.download-btns');
+        if (downloadButtons) {
+            downloadButtons.style.display = 'none';
         }
 
-        function generateMarkdown() {
-            let md = `# ${document.querySelector('h1').innerText}\n\n`;
-            md += `${document.querySelector('.personal-info p').innerText}\n\n`;
-            
-            const contactInfo = [];
-            document.querySelectorAll('.contact-info a').forEach(a => {
-                const label = a.previousSibling.textContent.trim();
-                contactInfo.push(`[${a.innerText}](${a.href})`);
-            });
-            md += contactInfo.join(' | ') + '\n\n';
+        html2pdf().set(opt).from(element).save().then(() => {
+            // Restore download buttons after PDF generation
+            if (downloadButtons) {
+                downloadButtons.style.display = 'block';
+            }
+        });
+    };
 
-            document.querySelectorAll('section').forEach(section => {
-                const h2 = section.querySelector('h2');
-                if (h2) {
-                    md += `## ${h2.innerText}\n\n`;
+    document.getElementById('download-md').onclick = function() {
+        const mdLines = [];
+        mdLines.push('# ' + document.querySelector('h1').innerText + '\n');
+        mdLines.push(document.querySelector('.subtitle').innerText + '\n');
+
+        mdLines.push('## 联系方式\n');
+        document.querySelectorAll('.contact-info a').forEach(a => {
+            mdLines.push('- ' + a.innerText.trim() + ': ' + a.href + '\n');
+        });
+        mdLines.push('\n');
+
+        document.querySelectorAll('section').forEach(sec => {
+            const h2 = sec.querySelector('h2');
+            if (!h2) return;
+            mdLines.push('## ' + h2.innerText + '\n');
+
+            sec.querySelectorAll('h3').forEach(h3 => {
+                mdLines.push('### ' + h3.innerText + '\n');
+                const next = h3.nextElementSibling;
+                if (next && (next.tagName === 'DIV' || next.tagName === 'UL')) {
+                    next.querySelectorAll('li').forEach(li => mdLines.push('- ' + li.innerText + '\n'));
                 }
-                
-                const h3s = section.querySelectorAll('h3');
-                if (h3s.length > 0 && section.id === 'highlights') {
-                     h3s.forEach(h3 => {
-                        md += `### ${h3.innerText}\n`;
-                        let nextElement = h3.nextElementSibling;
-                        if (nextElement && nextElement.tagName === 'UL') {
-                            nextElement.querySelectorAll('li').forEach(li => {
-                                md += `* ${li.innerText.replace(/(\r\n|\n|\r)/gm, " ").trim()}\n`;
-                            });
-                        }
-                        md += '\n';
-                    });
-                } else if (section.id === 'experience') {
-                    section.querySelectorAll('.experience-item').forEach(item => {
-                        md += `### ${item.querySelector('h3').innerText}\n`;
-                        md += `*${item.querySelector('p').innerText}*\n\n`;
-                        item.querySelectorAll('ul > li').forEach(li => {
-                            const strong = li.querySelector('strong');
-                            if (strong) {
-                                md += `**${strong.innerText.replace(':', '')}**\n`;
-                                li.querySelectorAll('ul > li').forEach(sub_li => {
-                                    md += `  * ${sub_li.innerText.replace(/(\r\n|\n|\r)/gm, " ").trim()}\n`;
-                                });
-                            } else {
-                                 md += `* ${li.innerText.replace(/(\r\n|\n|\r)/gm, " ").trim().replace(/\s\s+/g, ' ')}\n`;
-                            }
-                        });
-                        md += '\n';
-                    });
-                } else if (section.id === 'education') {
-                     section.querySelectorAll('.education-item').forEach(item => {
-                        md += `* **${item.querySelector('h3').innerText}**: ${item.querySelector('p').innerText}\n`;
-                    });
-                    md += '\n';
-                } else if (section.id === 'skills' || section.id === 'certifications') {
-                    const items = [];
-                    section.querySelectorAll('span').forEach(span => items.push(`\`${span.innerText}\``));
-                    md += items.join(' ') + '\n\n';
-                } else if (section.id === 'languages') {
-                    const items = [];
-                    section.querySelectorAll('span').forEach(span => items.push(span.innerText));
-                    md += items.join(', ') + '\n\n';
-                }
+                mdLines.push('\n');
             });
+            // Handle sections without h3 (like skills, education cards)
+            if (sec.id === 'education') {
+                sec.querySelectorAll('.card').forEach(card => {
+                    mdLines.push('- ' + card.innerText.trim() + '\n');
+                });
+                mdLines.push('\n');
+            } else if (sec.querySelector('.tag')) { // For skills and certifications
+                const tags = [];
+                sec.querySelectorAll('.tag').forEach(tag => tags.push(tag.innerText));
+                mdLines.push(tags.map(t => `\`${t}\``).join(' ') + '\n');
+                mdLines.push('\n');
+            } else if (sec.querySelector('.card') && sec.querySelector('h2').innerText.includes('语言能力')) { // For language card
+                mdLines.push('- ' + sec.querySelector('.card').innerText.trim() + '\n');
+                mdLines.push('\n');
+            }
+        });
 
-            return md;
-        }
-
-        function downloadMarkdown() {
-            const markdownContent = generateMarkdown();
-            const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = '刘登丰-个人简历.md';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        document.getElementById('download-pdf').addEventListener('click', downloadPdf);
-        document.getElementById('download-md').addEventListener('click', downloadMarkdown);
-    </script>
+        const blob = new Blob([mdLines.join('')], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '刘登丰-技术简历.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+</script>
 </body>
 </html>
