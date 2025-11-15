@@ -304,6 +304,7 @@
     </section>
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 <script>
     document.getElementById('download-pdf').onclick = function() {
         const element = document.querySelector('.container');
@@ -320,7 +321,7 @@
             downloadButtons.style.display = 'none';
         }
 
-        html2pdf().set(opt).from(element).save().then(() => {
+        window.html2pdf().set(opt).from(element).save().then(() => {
             // Restore download buttons after PDF generation
             if (downloadButtons) {
                 downloadButtons.style.display = 'block';
