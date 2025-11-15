@@ -329,7 +329,7 @@
         });
     };
 
-    document.getElementById('download-md').onclick = function() {
+    function generateMarkdown() {
         const mdLines = [];
         mdLines.push('# ' + document.querySelector('h1').innerText + '\n');
         mdLines.push(document.querySelector('.subtitle').innerText + '\n');
@@ -345,32 +345,59 @@
             if (!h2) return;
             mdLines.push('## ' + h2.innerText + '\n');
 
-            sec.querySelectorAll('h3').forEach(h3 => {
-                mdLines.push('### ' + h3.innerText + '\n');
-                const next = h3.nextElementSibling;
-                if (next && (next.tagName === 'DIV' || next.tagName === 'UL')) {
-                    next.querySelectorAll('li').forEach(li => mdLines.push('- ' + li.innerText + '\n'));
-                }
-                mdLines.push('\n');
-            });
-            // Handle sections without h3 (like skills, education cards)
-            if (sec.id === 'education') {
+            if (h2.innerText.includes('工作经历')) {
+                sec.querySelectorAll('.card').forEach(card => {
+                    const h3 = card.querySelector('h3');
+                    const p = card.querySelector('p');
+                    if (h3) {
+                        mdLines.push('### ' + h3.innerText + '\n');
+                    }
+                    if (p) {
+                        mdLines.push('*' + p.innerText + '*\n');
+                    }
+                    card.querySelectorAll('li').forEach(li => {
+                        mdLines.push('- ' + li.innerText.trim() + '\n');
+                    });
+                    mdLines.push('\n');
+                });
+            } else if (h2.innerText.includes('优势亮点')) {
+                sec.querySelectorAll('.card').forEach(card => {
+                    const h3 = card.querySelector('h3');
+                    if (h3) {
+                        mdLines.push('### ' + h3.innerText + '\n');
+                    }
+                    card.querySelectorAll('li').forEach(li => {
+                        mdLines.push('- ' + li.innerText.trim() + '\n');
+                    });
+                    mdLines.push('\n');
+                });
+            } else if (h2.innerText.includes('教育背景')) {
                 sec.querySelectorAll('.card').forEach(card => {
                     mdLines.push('- ' + card.innerText.trim() + '\n');
                 });
                 mdLines.push('\n');
-            } else if (sec.querySelector('.tag')) { // For skills and certifications
+            } else if (h2.innerText.includes('技术技能')) {
                 const tags = [];
                 sec.querySelectorAll('.tag').forEach(tag => tags.push(tag.innerText));
                 mdLines.push(tags.map(t => `\`${t}\``).join(' ') + '\n');
                 mdLines.push('\n');
-            } else if (sec.querySelector('.card') && sec.querySelector('h2').innerText.includes('语言能力')) { // For language card
+            } else if (h2.innerText.includes('语言能力')) {
                 mdLines.push('- ' + sec.querySelector('.card').innerText.trim() + '\n');
+                mdLines.push('\n');
+            } else if (h2.innerText.includes('证书')) {
+                const tags = [];
+                sec.querySelectorAll('.tag').forEach(tag => tags.push(tag.innerText));
+                mdLines.push(tags.map(t => `\`${t}\``).join(' ') + '\n');
                 mdLines.push('\n');
             }
         });
 
-        const blob = new Blob([mdLines.join('')], { type: 'text/markdown;charset=utf-8' });
+        return mdLines.join('');
+    }
+
+    document.getElementById('download-md').onclick = function() {
+        const markdownContent = generateMarkdown();
+        const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
